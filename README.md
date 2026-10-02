@@ -91,16 +91,26 @@ game itself. WinBolo must be built with ONNX Runtime, which is on by default.
 Run it headless on a training map:
 
 ```bash
+WINBOLO_ML_LOG=ml_brain_log.jsonl \
 /path/to/winbolo/build/WinBoloHeadless --fast --map maps/phase0_boat.map \
   --brain checkpoints/phase0_boat/phase0_boat_final.onnx --ticks 2000
 python scripts/view_ml_log.py ml_brain_log.jsonl
 ```
 
-The game writes `ml_brain_log.jsonl` as the model plays, and `view_ml_log.py`
-draws the tank's path over the map along with its actions and captures.
+The game writes the file named by `WINBOLO_ML_LOG` as the model plays, one
+line per tick, and `view_ml_log.py` draws the tank's path over the map along
+with its actions and captures. The variable is read by the game and the
+headless runner alike. Leave it unset and nothing is written: the log grows
+by about half a kilobyte a tick for as long as the brain runs.
 
-To play alongside it, copy the `.onnx` file into WinBolo's `brains/onnx/`
-folder. It appears in the game's brain menu as `[ML] <name>`.
+To play alongside it, copy the `.onnx` file into an `onnx` folder inside
+the game's user brains directory, which the game creates on first run:
+
+- macOS: `~/Library/Application Support/WinBolo/WinBolo/Brains/onnx/`
+- Linux: `~/.local/share/WinBolo/WinBolo/Brains/onnx/`
+- Windows: `%APPDATA%\WinBolo\WinBolo\Brains\onnx\`
+
+It appears in the game's brain menu as `[ML] <name>`.
 
 ## The curriculum
 
