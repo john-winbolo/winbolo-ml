@@ -1,0 +1,42 @@
+# Copyright (c) 2026 John Morrison.
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Training artifacts
+runs/
+checkpoints/
+*.onnx
+
+# Virtual environments
+.venv/
+venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Game binaries and shared libraries
+*.exe
+*.so
+*.so.*
+
+# Trained models
+models/
+
+# Misc
+*~
+
+# Written by the game when it runs a model from this directory
+ml_brain_log*.jsonl
+WinBolo.json

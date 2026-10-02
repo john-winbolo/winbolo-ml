@@ -1,0 +1,2 @@
+# Copyright (c) 2026 John Morrison.
+# SPDX-License-Identifier: GPL-3.0-or-later

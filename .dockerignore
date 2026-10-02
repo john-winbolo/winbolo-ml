@@ -1,0 +1,11 @@
+# Copyright (c) 2026 John Morrison.
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+checkpoints/
+runs/
+tb_logs/
+logs/
+__pycache__/
+*.pyc
+.git/
+*.egg-info/

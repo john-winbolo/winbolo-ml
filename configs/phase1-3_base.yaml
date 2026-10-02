@@ -1,0 +1,37 @@
+# Copyright (c) 2026 John Morrison.
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+env:
+  map: "maps/phase1-3_base.map"
+  max_ticks: 3000
+  game_type: 3
+
+training:
+  total_timesteps: 500_000_000
+  num_envs: 64
+  learning_rate: 0.0003
+  n_steps: 4096
+  batch_size: 8192
+  n_epochs: 3
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_range: 0.2
+  ent_coef: 0.01
+  action_mask: [true, true, false, false, false, false, false, false]
+
+rewards:
+  phase: phase1_movement
+  overrides:
+    survival_tick: 0.0
+    exploration_bonus: 0.01
+    speed_bonus: 0.002
+    base_proximity: 0.0
+    base_captured: 50.0
+    own_base_frac_delta: 10.0
+    all_bases_owned: 200.0
+    idle_penalty: -0.03
+    boat_overstay: -0.005
+
+network:
+  encoder_dim: 64
+  hidden_dim: 256
